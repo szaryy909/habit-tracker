@@ -1,12 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Habit } from '../../app/habit.model';
 
 @Component({
   selector: 'app-habit-item',
-  standalone: true,
-  imports: [],
-  templateUrl: './habit-item.component.html',
-  styleUrl: './habit-item.component.css'
+  template: `
+    <span>{{ habit.name }} - {{ habit.createdAt | date:'short' }}</span>
+    <button (click)="remove.emit()">Usuń</button>
+  `
 })
 export class HabitItemComponent {
-
+  @Input() habit!: Habit;
+  @Output() remove = new EventEmitter<void>();
 }
