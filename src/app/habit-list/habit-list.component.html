@@ -1,1 +1,6 @@
-<p>habit-list works!</p>
+<ul>
+    <li *ngFor="let habit of habits; let i = index">
+      <app-habit-item [habit]="habit" (remove)="onRemove(i)"></app-habit-item>
+    </li>
+  </ul>
+  
